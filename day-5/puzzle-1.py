@@ -2,22 +2,6 @@ import bisect
 from typing import NamedTuple
 
 
-def find_le(a, x, **kwargs):
-    'Find rightmost value less than or equal to x'
-    i = bisect.bisect_right(a, x, **kwargs)
-    if i:
-        return a[i-1]
-    raise ValueError
-
-
-def find_ge(a, x, **kwargs):
-    'Find leftmost item greater than or equal to x'
-    i = bisect.bisect_left(a, x, **kwargs)
-    if i != len(a):
-        return a[i]
-    raise ValueError
-
-
 class FreshID(NamedTuple):
     start: int
     stop: int
