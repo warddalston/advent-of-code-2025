@@ -21,18 +21,17 @@ with open("day-11/input.txt") as f:
 graph = {}
 for line in puzzle.splitlines():
     key, value = line.split(': ')
-    graph[key] = [value.split(" "), 0]
+    graph[key] = value.split(" ")
 
 to_search = deque()
 to_search.append("you")
 paths = 0
 while to_search:
     current = to_search.popleft()
-    for destination in graph[current][0]:
+    for destination in graph[current]:
         if destination == "out":
             paths += 1
             continue
-        graph[destination][1] += 1
         to_search.append(destination)
 
 paths
